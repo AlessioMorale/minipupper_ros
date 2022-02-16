@@ -43,7 +43,15 @@
     <group if="$(arg hardware_connected)">
         <rosparam file="$(find servo_interface)/config/calibration/calibration.yaml" command="load"/>
         <include file="$(find servo_interface)/launch/servo_interface.launch"/>
+<<<<<<< HEAD
         <!--include file="$(find ps4_interface)/launch/ps4_interface.launch"/-->
         <include file="$(find ldlidar)/launch/ld06.launch"/>
+=======
+        <include file="$(find ps4_interface)/launch/ps4_interface.launch"/>
+        <node name="LD06" pkg="ld06_lidar" type="ld06_lidar" args="LD06" output="screen">
+            <param name="lidar_frame" value="lidar_frame"/>
+            <remap from="/LiDAR/LD06" to="/scan"/>
+        </node>
+>>>>>>> ldlidar - add frame to the urdf, reference the node directly
     </group>
 </launch>
