@@ -7,3 +7,6 @@
 [submodule "yocs_velocity_smoother"]
 	path = yocs_velocity_smoother
 	url = https://github.com/chvmp/yocs_velocity_smoother.git
+[submodule "ldlidar"]
+	path = ldlidar
+	url = https://github.com/AlessioMorale/ld06_lidar.git
