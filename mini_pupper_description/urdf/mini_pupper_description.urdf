@@ -1756,9 +1756,9 @@
     </inertial>
   </link>
   <joint name="lidar_joint" type="fixed">
-    <parent link="base_link"/>
+    <parent link="lidar"/>
     <child link="lidar_frame"/>
-    <origin rpy="0 0 1.57" xyz="0.0 -0.05 0.03"/>
+    <origin rpy="0 0 1.57" xyz="0 0 0"/>
   </joint>
   
   <gazebo>
