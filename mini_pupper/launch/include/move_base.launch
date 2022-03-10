@@ -1,6 +1,7 @@
 <launch>
     <arg name="frame_prefix" default=""/>
     <arg name="robot_name" default=""/>
+    <arg name="use_eband" default="true"/>
 
     <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
         <rosparam file="$(find mini_pupper)/config/move_base/costmap_common_params.yaml" command="load" ns="global_costmap" />
@@ -8,7 +9,10 @@
         <rosparam file="$(find mini_pupper)/config/move_base/local_costmap_params.yaml" command="load" />
         <rosparam file="$(find mini_pupper)/config/move_base/global_costmap_params.yaml" command="load" />
         <rosparam file="$(find mini_pupper)/config/move_base/base_local_planner_holonomic_params.yaml" command="load" />
+        <rosparam file="$(find mini_pupper)/config/move_base/base_local_planner_eband.yaml" command="load" />
         <rosparam file="$(find mini_pupper)/config/move_base/move_base_params.yaml" command="load" />
+        <param if="$(arg use_eband)" name="base_local_planner" value="eband_local_planner/EBandPlannerROS" />
+        <param unless="$(arg use_eband)" name="base_local_planner" value="dwa_local_planner/DWAPlannerROS" />
 
         <!-- explicitly define frame ids for movebase -->
         <param name="global_costmap/global_frame"                   value="$(arg frame_prefix)map"/>
