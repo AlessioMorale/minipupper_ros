@@ -1,6 +1,7 @@
 <launch>
     <arg name="robot_name" default="/"/>
     <arg name="rviz"       default="false"/>
+    <arg name="use_eband" default="true" />
     <param name="/use_sim_time" value="false" />
     
     <arg if="$(eval arg('robot_name') == '/')"  name="frame_prefix" value="" />
@@ -20,6 +21,7 @@
         <include file="$(find mini_pupper)/launch/include/move_base.launch">
             <arg name="frame_prefix" value="$(arg frame_prefix)"/>
             <arg name="robot_name"   value="$(arg robot_name)"/>
+            <arg name="use_eband"   value="$(arg use_eband)"/>
         </include>
         
         <node if="$(arg rviz)" name="rviz" pkg="rviz" type="rviz" required="true"
